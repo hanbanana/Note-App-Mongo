@@ -1,8 +1,7 @@
 var express = require("express");
 var mongojs = require("mongojs");
-var bodyParser = require('body-parser');
-var logger = require('morgan');
-
+var bodyParser = require('body-parser')
+var logger = require('morgan')
 
 var app = express()
 
@@ -22,8 +21,6 @@ var db = mongojs(databaseUrl, collections);
 db.on("error", function (error) {
     console.log("Database Error: ", error);
 });
-
-mongojs.connect("mongodb://heroku_k4npvtj3:rl8uap6in70hc9bv41u73vgvqt@ds151066.mlab.com:51066/heroku_k4npvtj3");
 
 
 app.get('/', function (req, res) {
