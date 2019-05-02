@@ -21,11 +21,11 @@ MongoDB, Node.js
 ## Screenshot
 * Main Page
 <p align="center">
-  <img width="500" height="500" src="./images/mongoNoteAppMainPage.PNG">
+  <img width="400" height="400" src="./images/mongoNoteAppMainPage.PNG">
 </p>
 
 * Edit Page
 <p align="center">
-  <img width="500" height="500" src="./images/mongoNoteAppEditPage.PNG">
+  <img width="400" height="400" src="./images/mongoNoteAppEditPage.PNG">
 </p>
 
