@@ -28,5 +28,5 @@ MongoDB, Node.js
 * Edit Page
 <p align="center">
   <img width="650" height="350" src="./images/mongoNoteAppEditPage.PNG">
-</p>
+</p> 
 
