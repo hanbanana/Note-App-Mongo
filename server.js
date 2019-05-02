@@ -2,7 +2,8 @@ var express = require("express");
 var mongojs = require("mongojs");
 var bodyParser = require('body-parser');
 var logger = require('morgan');
-var mongodb = require("mongodb");
+var mongoose = require("mongoose");
+
 
 var app = express()
 
@@ -15,22 +16,6 @@ app.use(express.static("public"));
 app.use(logger("dev"));
 
 
-var db;
-
-// Connect to the database before starting the application server.
-mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
-  if (err) {
-    console.log(err);
-    process.exit(1);
-  }
-
-  // Save database object from the callback for reuse.
-  db = database;
-  console.log("Database connection ready");
-
-
-
-
 var databaseUrl = "notetaker_mongo";
 var collections = ["notes"];
 
@@ -38,6 +23,29 @@ var db = mongojs(databaseUrl, collections);
 
 db.on("error", function (error) {
     console.log("Database Error: ", error);
+});
+
+// Database configuration with mongoose
+
+var databaseUri = "mongodb://localhost/latimesscrape";
+if (process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGODB_URI);
+} else {
+  mongoose.connect(databaseUri);
+}
+var db = mongoose.connection;
+
+mongoose.connect("mongodb://heroku_k4npvtj3:rl8uap6in70hc9bv41u73vgvqt@ds151066.mlab.com:51066/heroku_k4npvtj3");
+var db = mongoose.connection;
+
+// Show any mongoose errors
+db.on("error", function(error) {
+  console.log("Mongoose Error: ", error);
+});
+
+// Once logged in to the db through mongoose, log a success message
+db.once("open", function() {
+  console.log("Mongoose connection successful.");
 });
 
 
