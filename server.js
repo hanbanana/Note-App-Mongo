@@ -23,7 +23,7 @@ db.on("error", function (error) {
     console.log("Database Error: ", error);
 });
 
-mongjs.connect("mongodb://heroku_2pvlqg9x:failhoaef5bn4vo92v4l6bcrba@ds133202.mlab.com:33202/heroku_2pvlqg9x");
+mongjs.connect("mongodb://heroku_k4npvtj3:rl8uap6in70hc9bv41u73vgvqt@ds151066.mlab.com:51066/heroku_k4npvtj3");
 
 
 app.get('/', function (req, res) {
