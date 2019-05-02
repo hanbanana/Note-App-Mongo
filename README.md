@@ -13,6 +13,7 @@ MongoDB, Node.js
 
 ## To Install
 
+* Download and Insall Mongodb
 * Git Clone the repository
 * Navigate to the folder where the repository exists using Git Bash or Terminal
 * Run the command `npm install` to download the required dependencies
