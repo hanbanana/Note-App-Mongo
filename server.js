@@ -2,9 +2,7 @@ var express = require("express");
 var mongojs = require("mongojs");
 var bodyParser = require('body-parser');
 var logger = require('morgan');
-var mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/rotten-potatoes');
 
 var app = express()
 
