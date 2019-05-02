@@ -2,7 +2,7 @@ var express = require("express");
 var mongojs = require("mongojs");
 var bodyParser = require('body-parser');
 var logger = require('morgan');
-
+var mongodb = require("mongodb");
 
 var app = express()
 
@@ -15,31 +15,20 @@ app.use(express.static("public"));
 app.use(logger("dev"));
 
 
-//lets require/import the mongodb native drivers.
-var mongodb = require('mongodb');
+var db;
 
-//We need to work with "MongoClient" interface in order to connect to a mongodb server.
-var MongoClient = mongodb.MongoClient;
-
-// Connection URL. This is where your mongodb server is running.
-
-//(Focus on This Variable)
-var url = 'mongodb://heroku_k4npvtj3:rl8uap6in70hc9bv41u73vgvqt@ds151066.mlab.com:51066/heroku_k4npvtj3';      
-//(Focus on This Variable)
-
-// Use connect method to connect to the Server
-  MongoClient.connect(url, function (err, db) {
+// Connect to the database before starting the application server.
+mongodb.MongoClient.connect(process.env.MONGODB_URI, function (err, database) {
   if (err) {
-    console.log('Unable to connect to the mongoDB server. Error:', err);
-  } else {
-    console.log('Connection established to', url);
-
-    // do some work here with the database.
-
-    //Close connection
-    db.close();
+    console.log(err);
+    process.exit(1);
   }
-});
+
+  // Save database object from the callback for reuse.
+  db = database;
+  console.log("Database connection ready");
+
+
 
 
 var databaseUrl = "notetaker_mongo";
